@@ -157,3 +157,21 @@ title_rating = {
     for movie in movies
     if movie['rating'] > avg_rating
 }
+
+def all_genres(movies_check):
+    all_found_genres = set()
+    for movie in movies_check:
+        all_found_genres.update(movie['genres'])
+    return all_found_genres
+
+def common_actors(movie1, movie2):
+    result1 = set(movie1['actors'])
+    result2 = set(movie2['actors'])
+    common = result1 & result2
+    return common
+
+def genres_only_in_one(movies_a, movies_b):
+    genres_a = all_genres(movies_a)
+    genres_b = all_genres(movies_b)
+    difference = genres_a - genres_b
+    return difference
