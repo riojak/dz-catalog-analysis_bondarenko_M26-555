@@ -175,3 +175,13 @@ def genres_only_in_one(movies_a, movies_b):
     genres_b = all_genres(movies_b)
     difference = genres_a - genres_b
     return difference
+
+def iter_high_rated(movies_check, min_rating=8.0):
+    for movie in movies_check:
+        if movie['rating'] >= min_rating:
+            yield movie
+
+for movie in iter_high_rated(movies):
+    print(format_report_line(movie))
+
+total_duration = sum(movie['duration_min'] for movie in movies if movie['rating'] > 7)
