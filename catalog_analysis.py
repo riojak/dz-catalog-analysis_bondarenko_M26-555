@@ -49,8 +49,6 @@ def catalog_age_stats(movies_check, current_year=2026):
     return (oldest, newest, avg)
 
 def duration_in_hours(minutes):
-    if minutes <= 0:
-        return 0
     
     hours = minutes // 60
     remaining_minutes = minutes % 60
