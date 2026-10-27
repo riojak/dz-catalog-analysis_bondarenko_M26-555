@@ -134,3 +134,26 @@ def top_n_by_rating(movies_check, n=3):
     for movie in sorted_movies[:n]:
         result.append((movie['title'], movie['rating']))
     return result
+
+def count_by_genre(movies_check):
+    genre_counts = {}
+    for movie in movies_check:
+        for genre in movie['genres']:
+            genre_counts[genre] = genre_counts.get(genre, 0) + 1
+    return genre_counts
+
+def actor_filmography(movies_check):
+    filmography = {}
+    for movie in movies_check:
+        for actor in movie['actors']:
+            if actor not in filmography:
+                filmography[actor] = []
+            filmography[actor].append(movie['title'])
+    return filmography
+
+avg_rating = average_rating(movies)
+title_rating = {
+    movie['title']: movie['rating']
+    for movie in movies
+    if movie['rating'] > avg_rating
+}
